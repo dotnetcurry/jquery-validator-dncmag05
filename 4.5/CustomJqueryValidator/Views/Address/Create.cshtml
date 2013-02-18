@@ -1,0 +1,85 @@
+﻿@using CustomJqueryValidator.Data;
+
+@model CustomJqueryValidator.Models.Address
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Add new Address</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Address</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Street)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Street)
+            @Html.ValidationMessageFor(model => model.Street)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Area)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Area)
+            @Html.ValidationMessageFor(model => model.Area)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.State)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.State)
+            @Html.ValidationMessageFor(model => model.State)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CountryId, "Country")
+        </div>
+        <div class="editor-field">
+            @{
+    if (ViewBag.CountryId != null)
+    {
+        List<Country> countries = (List<Country>)ViewBag.CountryId;
+                <select id="CountryId" name="CountryId">
+                    @foreach (Country country in countries)
+                    {
+                        <option value="@country.Id" data-length="@country.CodeLength">@country.Name</option>
+                    }
+                </select>
+    }
+            }
+            @Html.ValidationMessageFor(model => model.CountryId)
+        </div>
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Code)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Code)
+            @Html.ValidationMessageFor(model => model.Code)
+        </div>
+        <div class="editor-field">
+            @Html.HiddenFor(model => Model.SelectedCountryCodeLength, new { id = "SelectedCountryCodeLength" })
+        </div>
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/Validators/jquery.unobstrusive-dynamiclength.js"></script>
+}
