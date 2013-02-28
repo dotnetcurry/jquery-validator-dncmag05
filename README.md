@@ -2,6 +2,9 @@ Creating a Custom Unobtrusive jQuery Validator for ASP.NET MVC 4
 ================================================================
 
 Code for a jQuery Validator that compares length of a string to a value in DOM. 
+The 4.0 folder has the Solution for .NET 4.0 using VS 2010.
+The 4.5 folder has the Solution for .NET 4.5 using VS 2012.
+
 This code is a part of the [DNC Magazine Issue 5 (March-April 2013)](http://www.dotnetcurry.com/magazine/dnc-magazine/dnc-magazine-issue5.aspx) and demonstrates how to build a jQuery Validator for ASP.NET MVC. 
 This magazine is absolutely free. [Subscribe now](http://www.dotnetcurry.com/magazine)
 
